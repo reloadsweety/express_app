@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
-            eb use express-app-dev --profile eb-cli
+            eb list
             eb deploy -v --staged --profile eb-cli
  
 workflows:
