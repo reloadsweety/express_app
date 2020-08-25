@@ -26,10 +26,10 @@ jobs:
           name: "Check elasticbeanstalk config"
           command: |
             cat .elasticbeanstalk/config.yml
+            eb list
       - run:
           name: Deploy to EB
           command: |
-            eb list
             eb use express-app-dev --profile eb-cli
             eb deploy -v --staged --profile eb-cli
  
