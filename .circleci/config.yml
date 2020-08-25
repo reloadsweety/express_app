@@ -23,9 +23,8 @@ jobs:
           name: Check ~/.aws/config
           command: cat ~/.aws/config
       - run:
-          name: "Check path"
+          name: "Check elasticbeanstalk config"
           command: |
-            pwd
             cat .elasticbeanstalk/config.yml
       - run:
           name: Deploy to EB
@@ -44,4 +43,3 @@ workflows:
             branches:
               only:
                 - master
-                - develop
