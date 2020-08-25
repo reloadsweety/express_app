@@ -6,10 +6,10 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run:
-          name: Install awscli
-          command: |
-            sudo pip install awsebcli --upgrade
+      # - run:
+      #     name: Install awscli
+      #     command: |
+      #       sudo pip install awsebcli --upgrade
       - run:
           name: Create AWS credentials manually
           command: |
@@ -17,19 +17,21 @@ jobs:
             touch ~/.aws/config
             chmod 600 ~/.aws/config
             echo "[profile eb-cli]" > ~/.aws/config
-            echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
-            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+            echo "aws_access_key_id = $AWS_ACCESS_KEY_ID" >> ~/.aws/config
+            echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
       - run:
           name: Check ~/.aws/config
           command: cat ~/.aws/config
-      # - run:
-      #     name: "Print AWS_SECRET_ACCESS_KEY"
-      #     command: echo ${AWS_ACCESS_KEY_ID}
       - run:
-          name: Deploy to EB if branch is Master
+          name: "Check path"
           command: |
-            eb list
-            eb deploy -v --staged --profile eb-cli
+            pwd
+      # - run:
+      #     name: Deploy to EB
+      #     command: |
+      #       eb list
+      #       eb use express-app-dev --profile eb-cli
+      #       eb deploy -v --staged --profile eb-cli
  
 workflows:
   version: 2
