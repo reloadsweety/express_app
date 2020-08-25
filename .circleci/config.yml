@@ -6,10 +6,10 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run:
-          name: Install awscli
-          command: |
-            sudo pip install awsebcli --upgrade
+      # - run:
+      #     name: Install awscli
+      #     command: |
+      #       sudo pip install awsebcli --upgrade
       - run:
           name: Create AWS credentials manually
           command: |
@@ -20,11 +20,11 @@ jobs:
             echo "aws_access_key_id = ${AWS_ACCESS_KEY_ID}" >> ~/.aws/config
             echo "aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >> ~/.aws/config
       - run:
-          name: "Print AWS_ACCESS_KEY_ID"
-          command: echo ${AWS_SECRET_ACCESS_KEY}
-      - run:
-          name: "Print AWS_SECRET_ACCESS_KEY"
-          command: echo ${AWS_ACCESS_KEY_ID}
+          name: "AWS CONFIG"
+          command: cat ~/.aws/config
+      # - run:
+      #     name: "Print AWS_SECRET_ACCESS_KEY"
+      #     command: echo ${AWS_ACCESS_KEY_ID}
       # - run:
       #     name: Deploy to EB if branch is Master
       #     command: |
