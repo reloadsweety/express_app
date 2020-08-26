@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
-  res.send('Hello World! GAME TEST')
+  res.send('Hello World! GAME TEST DEPLOY')
 });
 
 app.get('/users', (req, res) => {
